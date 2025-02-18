@@ -11,7 +11,7 @@ module tt_um_up_down_counter_tb;
     // Inputs
     reg clk;
     reg reset;
-    reg enable;
+    reg ena;
     reg set;
     reg [3:0] set_value;
     reg up_down;
@@ -23,7 +23,7 @@ module tt_um_up_down_counter_tb;
     tt_um_up_down_counter dut (
         .clk(clk),
         .reset(reset),
-        .enable(enable),
+        .ena(ena),
         .set(set),
         .set_value(set_value),
         .up_down(up_down),
@@ -39,7 +39,7 @@ module tt_um_up_down_counter_tb;
         // Initialize Inputs
         clk = 0;
         reset = 0;
-        enable = 0;
+        ena = 0;
         set = 0;
         set_value = 4'b0000;
         up_down = 0;
@@ -59,7 +59,7 @@ module tt_um_up_down_counter_tb;
         `assert(count, 4'b1010);
 
         // Test enable and up counting
-        enable = 1;
+        ena = 1;
         up_down = 1; // Count up
         #50;
         `assert(count, 4'b1111);
@@ -69,7 +69,7 @@ module tt_um_up_down_counter_tb;
         #50;
 
         // Test disable counting
-        enable = 0;
+        ena = 0;
         #20;
 
         // Test reset during operation
@@ -77,7 +77,7 @@ module tt_um_up_down_counter_tb;
         #10;
         reset = 0;
         `assert(count, 4'b0000);
-        enable = 1;
+        ena = 1;
         up_down = 1; // Count up
         #50;
 
