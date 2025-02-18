@@ -10,8 +10,8 @@ module tt_um_up_down_counter_tb;
 
     // Inputs
     reg clk;
-    reg reset;
-    reg enable;
+    reg rst_n;
+    reg ena;
     reg set;
     reg [3:0] set_value;
     reg up_down;
@@ -22,8 +22,8 @@ module tt_um_up_down_counter_tb;
     // Instantiate the Unit Under Test (UUT)
     tt_um_up_down_counter dut (
         .clk(clk),
-        .reset(reset),
-        .enable(enable),
+        .rst_n(rst_n),
+        .ena(ena),
         .set(set),
         .set_value(set_value),
         .up_down(up_down),
@@ -38,17 +38,17 @@ module tt_um_up_down_counter_tb;
         $dumpvars(0, dut);
         // Initialize Inputs
         clk = 0;
-        reset = 0;
-        enable = 0;
+        rst_n = 0;
+        ena = 0;
         set = 0;
         set_value = 4'b0000;
         up_down = 0;
         `assert(set, 0);
 
-        // Apply reset
-        reset = 1;
+        // Apply rst_n
+        rst_n = 1;
         #10;
-        reset = 0;
+        rst_n = 0;
         `assert(count, 4'b0000);
 
         // Test set functionality
@@ -58,8 +58,8 @@ module tt_um_up_down_counter_tb;
         set = 0;
         `assert(count, 4'b1010);
 
-        // Test enable and up counting
-        enable = 1;
+        // Test ena and up counting
+        ena = 1;
         up_down = 1; // Count up
         #50;
         `assert(count, 4'b1111);
@@ -69,15 +69,15 @@ module tt_um_up_down_counter_tb;
         #50;
 
         // Test disable counting
-        enable = 0;
+        ena = 0;
         #20;
 
-        // Test reset during operation
-        reset = 1;
+        // Test rst_n during operation
+        rst_n = 1;
         #10;
-        reset = 0;
+        rst_n = 0;
         `assert(count, 4'b0000);
-        enable = 1;
+        ena = 1;
         up_down = 1; // Count up
         #50;
 

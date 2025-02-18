@@ -18,14 +18,13 @@ project:
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "tt_um_up_down_counter.v"
-    - "tb_counter.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
   ui[0]: "clk"
-  ui[1]: "reset"
-  ui[2]: "enable"
+  ui[1]: "rst_n"
+  ui[2]: "ena"
   ui[3]: "set"
   ui[4]: "set_value[0]"
   ui[5]: "set_value[1]"
