@@ -6,7 +6,7 @@
             $finish; \
         end
 
-module up_down_counter_tb;
+module tt_um_up_down_counter_tb;
 
     // Inputs
     reg clk;
@@ -20,7 +20,7 @@ module up_down_counter_tb;
     wire [3:0] count;
 
     // Instantiate the Unit Under Test (UUT)
-    up_down_counter dut (
+    tt_um_up_down_counter dut (
         .clk(clk),
         .reset(reset),
         .enable(enable),

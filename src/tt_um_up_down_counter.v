@@ -1,4 +1,4 @@
-module up_down_counter (
+module tt_um_up_down_counter (
     input wire clk,
     input wire reset,
     input wire enable,
